@@ -26,6 +26,7 @@
         <tr th:each="libro : ${libros}">
             <td th:text="${libro.title}"></td>
             <td th:text="${libro.author}"></td>
+            <td th:text="${libro.category.name}"></td>
             <td>
                 <a th:href="@{/updateLibro/{id}(id=${libro.id})}">Update</a>
                 <a th:href="@{/detailLibro/{id}(id=${libro.id})}">Details</a>

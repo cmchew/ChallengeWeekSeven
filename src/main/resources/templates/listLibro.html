@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Team List</title>
+    <div th:replace="base :: headerfg"></div>
+</head>
+<style>
+    .main {
+        padding: 20px;
+    }
+</style>
+
+<body>
+
+<div th:replace="base :: navlinksfg"></div>
+
+
+<div class = "main">
+
+    <button><a th:href="@{/addCategory}">Add a category.</a></button>
+    <br><br>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Actions</th>
+
+    </tr>
+    <tr th:each="libro : ${libros}">
+        <td th:text="${libro.name}"></td>
+        <td th:text="${libro.author}"></td>
+        <td th:text="${libro.year}"></td>
+        <td>
+            <a th:href="@{/updateLibro/{id}(id=${libro.id})}">Update</a>
+            <a th:href="@{/detailLibro/{id}(id=${libro.id})}">Details</a>
+        </td>
+    </tr>
+</table>
+</div>
+<div th:replace="base ::footerfg"></div>
+</body>
+</html>

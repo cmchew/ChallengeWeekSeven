@@ -15,6 +15,9 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
 
     public void run(String...args){
         User user = new User("mc", "mc@domain.com", "mc", "MC", "Raptor", true);
@@ -42,9 +45,9 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 //        user1.setBorrow(libro1);//assign book to user
         userRepository.save(user1);//save user
 
-//        Genre category1 = new Genre();
-//        category1.setName("Information Technology");
-//        categoryRepository.save(category1);//save category1
+        Category category1 = new Category();
+        category1.setName("Information Technology");
+        categoryRepository.save(category1);//save category1
 
     }
 }

@@ -24,13 +24,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/admin", "/register").hasAnyRole("ADMIN")
 //                .antMatchers("/register").hasRole("ADMIN")
                 .antMatchers("/").permitAll()//design new home page welcome to courses
-                .antMatchers("/addUser").hasRole("ADMIN")
-                .antMatchers("/processUser").hasRole("ADMIN")
-                .antMatchers("/updateUser/**").hasRole("ADMIN")//adds any characte after the slash such as the id number of empl
+                .antMatchers("/addCategory").hasRole("ADMIN")
+                .antMatchers("/processCategory").hasRole("ADMIN")
+                .antMatchers("/updateCategory/**").hasRole("ADMIN")//adds any character after the slash such as the id number of empl
                 .antMatchers("/addLibro").hasRole("ADMIN")
                 .antMatchers("/processLibro").hasRole("ADMIN")
                 .antMatchers("/updateLibro/**").hasRole("ADMIN")
-                .antMatchers("/listUser", "/detailEmployee").hasAnyRole("USER","ADMIN")
+                .antMatchers("/listCategory", "/detailCategory").hasAnyRole("USER","ADMIN")
                 .antMatchers("/listLibro").permitAll()
 //                .antMatchers("/detailUser").has("USER")
                 .and()

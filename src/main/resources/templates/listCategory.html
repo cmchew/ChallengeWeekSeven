@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    <div th:replace="base :: headerfg"></div>
+
+</head>
+<style>
+    .main {
+        padding: 20px;
+    }
+</style>
+<body>
+
+<div th:replace="base :: navlinksfg"></div>
+
+<div class="main">
+
+    <button><a th:href="@{/addCategory}">Add a category</a></button>
+    <br><br>
+
+
+<div th:each="category : ${categorys}">
+
+Category Name: <span th:text="${category.name}" ></span><br>
+
+<a th:href="@{/updateCategory/{id}(id=${category.id})}">Update</a>
+<a th:href="@{/detailCatetgory/{id}(id=${category.id})}">Details</a>
+<!--<a th:href="@{/delete/{id}(id=${department.id})}">Delete</a>-->
+    <br>
+    <br>
+
+</div>
+<div th:replace="base ::footerfg"></div>
+</div>
+</body>
+</html>

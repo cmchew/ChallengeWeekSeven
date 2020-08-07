@@ -15,17 +15,16 @@
 
 <div th:replace="base :: navlinksfg"></div>
 
-<button><a th:href="@{/listUser}">Back to User list.</a></button>
+<button><a th:href="@{/listUser}">Back to Category List.</a></button>
 
     <div class="main">
 
         <div>
-            First Name: <span th:text="${user.firstName}"></span><br/>
-            Last Name: <span th:text="${user.lastName}"></span><br/>
+            Category: <span th:text="${category.name}"></span><br/>
 
             <br>
 
-            <a th:href="@{/listUser}">Back to Employee list.</a>
+            <a th:href="@{/listLibros}">Back to books.</a>
 
         </div>
 

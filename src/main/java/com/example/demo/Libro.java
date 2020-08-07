@@ -16,7 +16,7 @@ public class Libro {
     private String ibsn;
     private String title;
     private String author;
-    private String category;
+//    private String category;
     private String quantity;
     private String year;
     private String image;
@@ -61,13 +61,13 @@ public class Libro {
         this.author = author;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
+//    public String getCategory() {
+//        return category;
+//    }
+//
+//    public void setCategory(String category) {
+//        this.category = category;
+//    }
 
     public String getQuantity() {
         return quantity;

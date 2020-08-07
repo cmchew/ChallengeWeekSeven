@@ -27,6 +27,9 @@ public class HomeCtrl {
     RoleRepository roleRepository;
 
     @Autowired
+    CategoryRepository categoryRepository;
+
+    @Autowired
     CloudinaryConfig cloudc;
 
     @RequestMapping("/")
@@ -48,6 +51,7 @@ public class HomeCtrl {
     @GetMapping("/addLibro")
     public String addLibro(Model model){
         model.addAttribute("libro", new Libro());
+        model.addAttribute("categorys", categoryRepository.findAll());
         return "addLibro";
     }
     @PostMapping("/processLibro")
@@ -71,64 +75,40 @@ public class HomeCtrl {
     public String updateLibro(@PathVariable("id") long id, Model model){
         Libro libro = libroRepository.findById(id).get();
         model.addAttribute("libro", libro);
+        model.addAttribute("categorys", categoryRepository.findAll());
         return "addLibro";
     }
 
-    //Users
+    //Category Table
 
-    @RequestMapping("/listUser")
-    public String listUser(Model model){
-        model.addAttribute("users", userRepository.findAll());
-        return "listUser";
+    @RequestMapping("/listCategory")
+    public String listCategory(Model model){
+        model.addAttribute("categorys", categoryRepository.findAll());
+        return "listCategory";
     }
 
-    @RequestMapping("/updateUsers/{id}")
-    public String updateUser(@PathVariable("id") long id, Model model){
-        model.addAttribute("user", userRepository.findById(id));
-        model.addAttribute("libros", libroRepository.findAll());
-        return "addUsers";
+    @RequestMapping("/updateCategory/{id}")
+    public String updateCategory(@PathVariable("id") long id, Model model){
+        model.addAttribute("category", categoryRepository.findById(id));
+        return "addCategory";
     }
-    @GetMapping("/addUsers")
-    public String addUser(Model model){
-        model.addAttribute("user", new User());
-        model.addAttribute("libros", libroRepository.findAll());
-        return "addUser";
+    @GetMapping("/addCategory")
+    public String addCategory(Model model){
+        model.addAttribute("category", new Category());
+        return "addCategory";
     }
-    @PostMapping("/processUser")
-    public String processUser(@ModelAttribute User user,
-                                  @RequestParam("file")MultipartFile file) {
-        if(file.isEmpty()){
-            return "addEmployee";
-        }
-        try {
-            Map uploadResult = cloudc.upload(file.getBytes(),
-                    ObjectUtils.asMap("resourcetype", "auto"));
-            user.setHeadshot(uploadResult.get("url").toString());
-            userRepository.save(user);
-
-            } catch (IOException e) {
-            e.printStackTrace();
-            return "redirect:/addUser";
-        }
-//        userRepository.save(user);
+    @PostMapping("/processCategory")
+    public String processCategory(@ModelAttribute Category category){
+        categoryRepository.save(category);
         return "redirect:/";
     }
-    @RequestMapping("/detailUser/{id}")
+    @RequestMapping("/detailCategory/{id}")
     public String detailUser(@PathVariable("id") long id, Model model) {
-        User user = userRepository.findById(id).get();
-        model.addAttribute("user", user);
-        return "detaiUser";
+        Category category = categoryRepository.findById(id).get();
+        model.addAttribute("category", category);
+        return "detailCategory";
     }
-
-
-
-
-//    @RequestMapping("/deleteEmployee/{id}")
-//    public String deleteEmployee(@PathVariable("id") long id){
-//        employeeRepository.deleteById(id);
-//        return "redirect:/";
-//
-//    }
+    //Add registration
     @GetMapping("/register")
     public String showRegistrationPage(Model model){
         model.addAttribute("user", new User());
@@ -161,24 +141,15 @@ public class HomeCtrl {
         model.addAttribute("users", userRepository.findAll());
         return "secure";
     }
-
-//    @RequestMapping("/")
-//    public String index() {
-//
-//        return "index";
-//    }
+    //Add login
     @RequestMapping("/login")
     public String login() {
         return "login";
     }
-//    @RequestMapping("/logout")
-//    public String logout() {
-//        return "redirect:/login?logout=true";
-//    }
+
     @RequestMapping("/admin")
     public String admin() {
         return "admin";
     }
-
 
 }

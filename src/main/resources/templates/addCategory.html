@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+    <div th:replace="base :: headerfg"></div>
+</head>
+<style>
+    .main {
+        padding: 20px;
+    }
+</style>
+<body>
+
+<div th:replace="base :: navlinksfg"></div>
+
+
+<div class = "main">
+
+<form action="#"
+      th:action="@{/processCategory}"
+      th:object="${category}"
+      method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    Category: <input type="text" th:field="*{Name}" /><br />
+
+    <select th:field="*{category.id}">
+        <option th:each="Category : ${categorys}"
+                th:value="${category.id}"
+                th:text="${category.name}"></option>
+    </select>
+
+    <input type="submit" value="Enter" />
+
+</form>
+
+<div th:replace="base ::footerfg"></div>
+</div>
+</body>
+</html>

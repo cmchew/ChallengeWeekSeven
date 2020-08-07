@@ -13,13 +13,13 @@
 <body>
 <div th:replace="base :: navlinksfg"></div>
 <div class = "main">
-Title :<span th:text="${libro.title}" ></span><br />
+Title: <span th:text="${libro.title}" ></span><br />
     <br>
-Author :<span th:text="${libro.author}" ></span><br />
+Author: <span th:text="${libro.author}" ></span><br />
 
     <br>
 
-    Status:
+    Book status:
 
     <label class="radio-inline">
         <input type="radio" th:field="*{enabled}" name="active" value=true checked>Available
@@ -28,7 +28,7 @@ Author :<span th:text="${libro.author}" ></span><br />
         <input type="radio" th:field="*{enabled}" name="active" value=false>Checked Out
     </label>
 
-<a th:href="@{/updateLibro/{id}(id=${libro.id})}">Update this book</a>
+<button><a th:href="@{/updateLibro/{id}(id=${libro.id})}">Update this book</a></button>
 </div>
 <div th:replace="base ::footerfg"></div>
 </body>
