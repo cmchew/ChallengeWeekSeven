@@ -14,13 +14,18 @@
 <body>
 
 <div th:replace="base :: navlinksfg"></div>
+
+
 <div class = "main">
+
+    <button><a th:href="@{/addDepartment}">Add a department.</a></button>
+    <br><br>
 
 <table>
     <tr>
         <th>Department Name</th>
         <th>Department Location</th>
-        <td>Actions</td>
+        <th>Actions</th>
 
     </tr>
     <tr th:each="department : ${departments}">
@@ -34,5 +39,6 @@
     </tr>
 </table>
 </div>
+<div th:replace="base ::footerfg"></div>
 </body>
 </html>

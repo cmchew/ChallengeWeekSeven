@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>MC Creatives</title>
+    <title>The People's Library</title>
     <div th:replace="base :: headerfg"></div>
 </head>
 <style>
@@ -12,16 +12,33 @@
 </style>
 <body>
 <div th:replace="base :: navlinksfg"></div>
-<div class="main">
-<h2>MC Creatives</h2>
-<p th:if="${message}">[[${message}]]</p>
 
-<p>Welcome to MC Creatives.<br>
-    We are the DMV's premiere source to find virtual talent for innovative editorial, web development and design projects.<br>
-    Please click here to view our <a th:href="@{/listDepartment}">our teams</a>.
-<br>
+
+<div class = "main">
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+
+        </tr>
+        <tr th:each="libro : ${libros}">
+            <td th:text="${libro.title}"></td>
+            <td th:text="${libro.author}"></td>
+            <td>
+                <a th:href="@{/updateLibro/{id}(id=${libro.id})}">Update</a>
+                <a th:href="@{/detailLibro/{id}(id=${libro.id})}">Details</a>
+                <!--            <a th:href="@{/deleteDepartment/{id}(id=${department.id})}">Delete</a>-->
+            </td>
+        </tr>
+    </table>
+</div>
+
+<button><a th:href="@{/register}">Register for an account</a></button>
+<button><a th:href="@{/addLibro}">Add a book</a></button>
+<br><br>
 
 <div th:replace="base ::footerfg"></div>
-</div>
 </body>
 </html>

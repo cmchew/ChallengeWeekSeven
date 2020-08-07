@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail User</title>
+    <div th:replace="base :: headerfg"></div>
+</head>
+<style>
+    .main {
+        padding: 20px;
+    }
+</style>
+<body>
+
+
+<div th:replace="base :: navlinksfg"></div>
+
+<button><a th:href="@{/listUser}">Back to User list.</a></button>
+
+    <div class="main">
+
+        <div>
+            First Name: <span th:text="${user.firstName}"></span><br/>
+            Last Name: <span th:text="${user.lastName}"></span><br/>
+
+            <br>
+
+            <a th:href="@{/listUser}">Back to Employee list.</a>
+
+        </div>
+
+
+
+</div>
+<div th:replace="base ::footerfg"></div>
+</body>
+</html>

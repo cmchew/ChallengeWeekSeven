@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book details</title>
+    <div th:replace="base :: headerfg"></div>
+</head>
+<style>
+    .main {
+        padding: 20px;
+    }
+</style>
+<body>
+<div th:replace="base :: navlinksfg"></div>
+<div class = "main">
+Title :<span th:text="${libro.title}" ></span><br />
+    <br>
+Author :<span th:text="${libro.author}" ></span><br />
+
+    <br>
+
+    Status:
+
+    <label class="radio-inline">
+        <input type="radio" th:field="*{enabled}" name="active" value=true checked>Available
+    </label>
+    <label class="radio-inline">
+        <input type="radio" th:field="*{enabled}" name="active" value=false>Checked Out
+    </label>
+
+<a th:href="@{/updateLibro/{id}(id=${libro.id})}">Update this book</a>
+</div>
+<div th:replace="base ::footerfg"></div>
+</body>
+</html>

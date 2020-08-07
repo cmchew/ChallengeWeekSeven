@@ -5,62 +5,73 @@
     <title>Registration</title>
     <div th:replace="base :: headerfg"></div>
 </head>
+<style>
+    .main {
+        padding: 20px;
+    }
+</style>
 <body>
 <div th:replace="base :: navlinksfg"></div>
 
+<div class = "main">
 <form autocomplete="off"
       th:action="@{/processregister}"
       th:object="${user}" method="post">
     First Name
     <input type="text" id="firstName" placeholder="First Name"
            th:field="*{firstName}"/>
-    <mark><strong>
-        <span th:if="${#fields.hasErrors('firstName')}"
-              th:errors="*{firstName}"></span>
-    </strong>
-    </mark>
+<!--    <mark><strong>-->
+<!--&lt;!&ndash;        <span th:if="${#fields.hasErrors('firstName')}"&ndash;&gt;-->
+<!--&lt;!&ndash;              th:errors="*{firstName}"></span>&ndash;&gt;-->
+<!--    </strong>-->
+<!--    </mark>-->
     <br>
     Last Name
     <input type="text" id="lastName" placeholder="Last Name"
            th:field="*{lastName}"/>
-    <mark><strong>
-        <span th:if="${#fields.hasErrors('lastName')}"
-              th:errors="*{lastName}"></span>
-    </strong>
-    </mark>
+<!--    <mark><strong>-->
+<!--        <span th:if="${#fields.hasErrors('lastName')}"-->
+<!--              th:errors="*{lastName}"></span>-->
+<!--    </strong>-->
+<!--    </mark>-->
     <br>
     Email
     <input type="text" id="email" placeholder="email@domain.com"
            th:field="*{email}"/>
-    <mark><strong>
-        <span th:if="${#fields.hasErrors('email')}"
-              th:errors="*{email}"></span>
-    </strong>
-    </mark>
+<!--    <mark><strong>-->
+<!--        <span th:if="${#fields.hasErrors('email')}"-->
+<!--              th:errors="*{email}"></span>-->
+<!--    </strong>-->
+<!--    </mark>-->
     <br>
     Username
     <input type="text" id="username" placeholder="Username"
            th:field="*{username}"/>
-    <mark><strong>
-        <span th:if="${#fields.hasErrors('username')}"
-              th:errors="*{username}"></span>
-    </strong>
-    </mark>
+<!--    <mark><strong>-->
+<!--        <span th:if="${#fields.hasErrors('username')}"-->
+<!--              th:errors="*{username}"></span>-->
+<!--    </strong>-->
+<!--    </mark>-->
     <br>
     Password
     <input type="text" id="password" placeholder="password"
            th:field="*{password}"/>
-    <mark><strong>
-        <span th:if="${#fields.hasErrors('password')}"
-              th:errors="*{password}"></span>
-    </strong>
-    </mark>
+<!--    <mark><strong>-->
+<!--        <span th:if="${#fields.hasErrors('password')}"-->
+<!--              th:errors="*{password}"></span>-->
+<!--    </strong>-->
+<!--    </mark>-->
     <br/>
+
+
+
     <button type="submit" class="btn btn-default">Submit</button>
 
 
 
 </form>
+
+</div>
 
 <div th:replace="base ::footerfg"></div>
 </body>

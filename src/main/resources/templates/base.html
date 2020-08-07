@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <div th:fragment="headerfg">
     <script src="https://kit.fontawesome.com/060e8bc0c6.js" crossorigin="anonymous"></script>
@@ -10,7 +10,7 @@
 
 <div th:fragment="navlinksfg">
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <a class="navbar-brand" href="#">MC Creatives</a>
+        <a class="navbar-brand" href="#">The People's Library</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,11 +18,17 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+<!--                <li sec:authorize="hasRole('ADMIN')" class="nav-item active">-->
+<!--                    <a class="nav-link" th:href="@{/admin}">Admin</a>-->
+                </li>
+                <li sec:authorize="hasAnyRole('USER','ADMIN')" class="nav-item active">
+                    <a class="nav-link" th:href="@{/listUsers}">Staff</a>
+                </li>
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/listDepartment}">Departments</a>
+                    <a class="nav-link" th:href="@{/detailLibro}">Book Details</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/login}">Login</a>
@@ -45,4 +51,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+    <script th:src="@{/js/validation.js}">
 </div>

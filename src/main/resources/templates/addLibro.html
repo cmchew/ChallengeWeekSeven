@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+    <div th:replace="base :: headerfg"></div>
+</head>
+<style>
+    .main {
+        padding: 20px;
+    }
+</style>
+<body>
+
+<div th:replace="base :: navlinksfg"></div>
+<div class = "main">
+<form action="#"
+      th:action="@{/processLibro}"
+      method="post"
+      th:object="${libro}"
+      enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}"/>
+
+
+    Title: <input type="text" th:field="*{title}"/> <br/> <br/>
+    Author: <input type="text" th:field="*{author}"/> <br/>
+    Category: <input type="text" th:field="*{category}"/> <br/> <br/>
+    Year Published: <input type="text" th:field="*{year}"/> <br/> <br/>
+    Quantity: <input type="text" th:field="*{quantity}"/> <br/>
+    IBSN: <input type="text" th:field="*{ibsn}"/> <br/> <br/>
+    <br/>
+    <div th:each="libro : ${libros}">
+        <div th:if="${libro.image} != null">
+            <img th:src="${libro.image} width=80 height=80"/>
+            <br/>
+        </div>
+    </div>
+    <input type="file" name="file"/><br><br>
+
+
+
+    <input type="submit" value="Enter" />
+
+</form>
+<div th:replace="base ::footerfg"></div>
+</div>
+</body>
+</html>
